@@ -1,19 +1,22 @@
-import { usedImages, usedMusic } from "./helpers";
-import { Promisable } from "./promisable";
+import { usedImages, usedMusic } from "./helpers.js";
+import { Promisable } from "./promisable.js";
+import { setText } from "./render.js";
 
-const loadedAssets = -1;
+let loadedAssets = -1;
 let totAssets = 0;
 
 const allAssetsLoaded = new Promisable();
 
-function gotAsset() {
+async function gotAsset(name) {
+    console.log(`Loaded: ${name}`);
     loadedAssets += 1;
+    await setText(`Loading assets: ${loadedAssets}/${totAssets}`);
     if(totAssets <= loadedAssets) {
         allAssetsLoaded.resolve();
     }
 }
 
-async function loadAssets(update_cb) {
+export async function loadAssets(update_cb) {
     if(totAssets <= loadedAssets) {
         return;
     }
@@ -21,14 +24,13 @@ async function loadAssets(update_cb) {
     totAssets = usedImages.size + usedMusic.size;
     for(const img of usedImages) {
         const $img = new Image();
-        $img.onload = gotAsset;
+        $img.addEventListener('load', () => gotAsset(img));
         $img.src = img;
     }
-    for(const img of usedMusic) {
+    for(const audio of usedMusic) {
         const $audio = new Audio();
-        $audio.onload = gotAsset;
-        $audio.src = img;
-        $audio.load(); // Needed?
+        $audio.addEventListener('canplaythrough', () => gotAsset(audio));
+        $audio.src = audio;
     }
     await allAssetsLoaded.promise;
 }
