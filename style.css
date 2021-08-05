@@ -1,0 +1,80 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+}
+html {
+    overflow: hidden;
+}
+body {
+    overflow: auto;
+}
+
+#version {
+    position: absolute;
+    top: 0;
+    right: 1em;
+    color: white;
+    font: 1em sans-serif;
+    z-index: 1000;
+    font-weight: bold;
+    padding: 0.5em;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#block {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    user-select: none;
+}
+
+#scene {
+    position: absolute;
+    top: 0;
+    bottom: 10.5em;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    overflow: hidden;
+}
+#left, #right {
+    position: absolute;
+    bottom: 0;
+    width: 45%;
+    height: 95%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    transition: margin 1s, filter 0.5s;
+    transition-timing-function: ease-out;
+}
+#left {
+    left: 0;
+}
+#right {
+    right: 0;
+}
+.outOfScene {
+    margin: 0 -45%;
+}
+.gray {
+    filter: grayscale(1);
+}
+#novelText {
+    position: absolute;
+    height: 4em;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    font: 2.5em sans-serif;
+    text-align: center;
+    overflow: auto;
+}
