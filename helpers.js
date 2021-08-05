@@ -19,7 +19,7 @@ export function img(name) {
 }
 
 export function who(character_sprite, side) {
-    const character = character.split('_')[0];
+    const character = character_sprite.split('_')[0];
     const src = `character/${character_sprite}.png`;
     usedImages.add(src);
     return (text) => ({
