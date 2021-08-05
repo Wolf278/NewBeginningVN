@@ -1,4 +1,8 @@
 
+/*
+  Story, Music and Assets by FiveTails (Wolf278 on GitHub)
+*/
+
 import { who, music, img } from "./helpers.js";
 
 export const characterColors = {
