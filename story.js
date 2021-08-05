@@ -21,6 +21,15 @@ export const story = {
     dialog: [
       "START"
     ]
+<Script-- = text/JavaScript>
+< Var menu, pass;
+   Menu = while 
+/--
+     Save (Ch)
+/--
+     Load (Ch1,Ch2,Ch3,Ch4) 
+<JavaScript/>
+
   },
   "Ch1": {
     bg: img('1.jpg'),
